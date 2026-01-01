@@ -22,10 +22,11 @@ m-moire-KM/
 │
 ├── .claude/
 │   └── agents/                    # ⭐ Agents Claude Code
-│       ├── redacteur.md           # Agent rédaction mémoire DEC
-│       ├── leo.md                 # Orchestrateur KM
-│       ├── sophie.md              # Spécialiste Avant-Vente
-│       └── marc.md                # Spécialiste Onboarding
+│       ├── redacteur.md           # Victor — Rédacteur mémoire DEC
+│       ├── architecte.md          # Jules — Architecte outils & UX
+│       ├── leo.md                 # Léo — Orchestrateur KM
+│       ├── sophie.md              # Sophie — Spécialiste Avant-Vente
+│       └── marc.md                # Marc — Spécialiste Onboarding
 │
 └── docs/
     ├── agents/                    # Base de connaissances agents
@@ -86,22 +87,24 @@ Les agents sont situés dans `.claude/agents/` et sont automatiquement reconnus 
 
 | Agent | Rôle | Modèle | Fichier |
 |-------|------|:------:|---------|
-| **Rédacteur** | Rédaction du mémoire DEC | Opus 4.5 | `.claude/agents/redacteur.md` |
+| **Victor** | Rédacteur du mémoire DEC | Opus 4.5 | `.claude/agents/redacteur.md` |
+| **Jules** | Architecte outils & expérience UX | Opus 4.5 | `.claude/agents/architecte.md` |
 | **Léo** | Orchestrateur KM, stratégie, SECI | Opus 4.5 | `.claude/agents/leo.md` |
 | **Sophie** | Spécialiste Avant-Vente | Opus 4.5 | `.claude/agents/sophie.md` |
 | **Marc** | Spécialiste Onboarding | Opus 4.5 | `.claude/agents/marc.md` |
 
-### Utilisation du Rédacteur
+### Utilisation de Victor (Rédacteur)
 
-L'agent **Rédacteur** est le point d'entrée principal. Il dispose de 6 modes :
+L'agent **Victor** est le rédacteur principal du mémoire. Il dispose de 7 modes :
 
 ```
-1. MODE RÉDACTION   → "Rédige la section 1.2"
-2. MODE RECHERCHE   → Recherche web de sources
-3. MODE ACQUISITION → Demande d'achat de documents
-4. MODE PLAN        → Affiner une section du plan
+1. MODE RÉDACTION    → "Rédige la section 1.2"
+2. MODE RECHERCHE    → Recherche web de sources
+3. MODE ACQUISITION  → Demande d'achat de documents
+4. MODE PLAN         → Affiner une section du plan
 5. MODE BIBLIOGRAPHIE → Gérer les sources
 6. MODE CONSULTATION → Appeler Léo, Sophie ou Marc
+7. MODE ANALYSE      → Analyser une source PDF
 ```
 
 **Démarrage** :
@@ -114,11 +117,30 @@ Sur quelle section souhaitez-vous travailler ?
 4. Voir l'état d'avancement
 5. Bibliographie — gérer les sources
 6. Consulter un agent (Léo, Sophie, Marc)
+7. Analyser une source (PDF dans docs/sources/)
 ```
+
+### Utilisation de Jules (Architecte)
+
+L'agent **Jules** conçoit et développe les outils du projet KM 360°. Il dispose de 5 modes :
+
+```
+1. MODE NOTION       → Templates et espaces Notion
+2. MODE REACT NATIVE → Composants et écrans mobile
+3. MODE MCP          → Intégrations Model Context Protocol
+4. MODE JEUX         → Jeux Design Thinking avec supports
+5. MODE DASHBOARD    → Tableaux de bord et visualisations
+```
+
+**Architecture cible** :
+- Frontend : React Native + Expo
+- Backend : Supabase (Auth, Database, Storage)
+- IA : Claude API + agents (Léo, Sophie, Marc)
+- Intégrations : MCP (Notion, Google, outils métier)
 
 ### Consultation des agents spécialisés
 
-Le Rédacteur peut consulter les autres agents selon les besoins :
+Victor peut consulter les autres agents selon les besoins :
 
 | Sujet | Agent à consulter |
 |-------|-------------------|
@@ -135,7 +157,8 @@ Le Rédacteur peut consulter les autres agents selon les besoins :
 
 | Agent | Outils |
 |-------|--------|
-| Rédacteur | Read, Grep, Glob, WebFetch, WebSearch, Write, Edit |
+| Victor | Read, Grep, Glob, WebFetch, WebSearch, Write, Edit |
+| Jules | Read, Grep, Glob, Write, Edit, WebSearch, WebFetch |
 | Léo | Read, Grep, Glob |
 | Sophie | Read, Grep, Glob |
 | Marc | Read, Grep, Glob |
