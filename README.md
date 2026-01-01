@@ -17,45 +17,47 @@
 ```
 m-moire-KM/
 │
-├── MEMOIRE_MASTER.md          # Plan détaillé du mémoire (source of truth)
-├── README.md                  # Ce fichier
+├── MEMOIRE_MASTER.md              # Plan original (notice 12/05/2024)
+├── README.md                      # Ce fichier
+│
+├── .claude/
+│   └── agents/                    # ⭐ Agents Claude Code
+│       ├── redacteur.md           # Agent rédaction mémoire DEC
+│       ├── leo.md                 # Orchestrateur KM
+│       ├── sophie.md              # Spécialiste Avant-Vente
+│       └── marc.md                # Spécialiste Onboarding
 │
 └── docs/
-    ├── agents/                # Agents IA (Léo + spécialistes)
-    │   ├── leo/               # Orchestrateur principal
-    │   │   ├── SKILL.md       # Définition du skill Léo
-    │   │   ├── assets/        # Templates (note de cadrage...)
-    │   │   └── references/    # Base de connaissances
-    │   │       └── design-thinking/  # 7 phases du DT
-    │   └── parcours/          # Agents spécialisés par parcours
-    │       ├── avant-vente/sophie.md
-    │       └── onboarding/marc.md
+    ├── agents/                    # Base de connaissances agents
+    │   ├── leo/                   # Références Léo
+    │   │   ├── SKILL.md           # Définition skill
+    │   │   ├── assets/            # Templates
+    │   │   └── references/        # Base de connaissances
+    │   ├── parcours/              # Agents spécialisés
+    │   │   ├── avant-vente/sophie.md
+    │   │   └── onboarding/marc.md
+    │   └── redacteur/SKILL.md     # Documentation rédacteur
     │
-    ├── frameworks/            # Fichiers Excel KM 360°
-    │   └── Framework_KM_360_V5.xlsx  # ⭐ Version actuelle
+    ├── frameworks/                # Fichiers Excel KM 360°
+    │   └── Framework_KM_360_V5.xlsx
     │
-    ├── guides/                # Documentation académique
-    │   └── Guide_KM_360_Academique_V2.md  # ⭐ Version actuelle
+    ├── guides/                    # Documentation académique
+    │   └── Guide_KM_360_Academique_V2.md
     │
-    ├── jeux/                  # Jeux Design Thinking
-    │   ├── JEU-001b_*.md      # Proposition de valeur
-    │   ├── JEU-004b_*.md      # Carte des offres
-    │   ├── JEU-015b_*.md      # Formalisation processus
+    ├── jeux/                      # Jeux Design Thinking
     │   └── JEUX_AVANT_VENTE_COMPLET.md
     │
-    ├── memoire/               # Versions du mémoire
-    │   ├── notice/            # Notice originale (12/05/2024)
-    │   ├── PLAN_MEMOIRE_V3.md # ⭐ Plan restructuré actuel
-    │   ├── CORRESPONDANCE_*.md # Mapping notice → mémoire
-    │   └── ARCHITECTURE_NARRATIVE_MEMOIRE.md
+    ├── memoire/                   # Versions du mémoire
+    │   ├── notice/                # Notice originale PDF
+    │   ├── MEMOIRE_MASTER_V1.md   # ⭐ Plan révisé v1.0
+    │   ├── NOTE_LIMINAIRE.md      # ⭐ Justification jury
+    │   └── CORRESPONDANCE_*.md    # Mapping notice → mémoire
     │
-    ├── templates/             # Templates pour le lecteur
-    │   └── NOTION_TEMPLATE_KM360.md  # ⭐ Carnet de bord projet
+    ├── templates/                 # Templates lecteur
+    │   └── NOTION_TEMPLATE_KM360.md
     │
-    └── processus/             # Process books
-        ├── PROCESS_BOOK_Avant_Vente.md
-        ├── PARCOURS_DD_Avant_Vente.md
-        └── AGENT_SOPHIE_AVANT_VENTE.md
+    └── processus/                 # Process books
+        └── PROCESS_BOOK_Avant_Vente.md
 ```
 
 ---
@@ -64,11 +66,79 @@ m-moire-KM/
 
 | Fichier | Rôle | Version |
 |---------|------|:-------:|
-| `MEMOIRE_MASTER.md` | Plan détaillé fidèle à la notice du 12/05/2024 | v0.2 |
+| `docs/memoire/MEMOIRE_MASTER_V1.md` | Plan détaillé révisé (100 pages, 10 chapitres) | v1.0 |
+| `docs/memoire/NOTE_LIMINAIRE.md` | Justification des évolutions pour le jury | v1.0 |
+| `MEMOIRE_MASTER.md` | Plan original fidèle à la notice | v0.2 |
 | `docs/frameworks/Framework_KM_360_V5.xlsx` | Framework Excel 40 onglets | V5 |
-| `docs/guides/Guide_KM_360_Academique_V2.md` | Guide académique complet | V2 |
-| `docs/memoire/PLAN_MEMOIRE_V3.md` | Plan restructuré (9 chapitres) | V3 |
 | `docs/templates/NOTION_TEMPLATE_KM360.md` | Carnet de bord lecteur (42 actions) | v1.0 |
+
+---
+
+## Agents Claude Code
+
+Le projet intègre un système d'agents IA sous **Claude Opus 4.5** pour accompagner la rédaction du mémoire.
+
+### Installation
+
+Les agents sont situés dans `.claude/agents/` et sont automatiquement reconnus par Claude Code.
+
+### Agents disponibles
+
+| Agent | Rôle | Modèle | Fichier |
+|-------|------|:------:|---------|
+| **Rédacteur** | Rédaction du mémoire DEC | Opus 4.5 | `.claude/agents/redacteur.md` |
+| **Léo** | Orchestrateur KM, stratégie, SECI | Opus 4.5 | `.claude/agents/leo.md` |
+| **Sophie** | Spécialiste Avant-Vente | Opus 4.5 | `.claude/agents/sophie.md` |
+| **Marc** | Spécialiste Onboarding | Opus 4.5 | `.claude/agents/marc.md` |
+
+### Utilisation du Rédacteur
+
+L'agent **Rédacteur** est le point d'entrée principal. Il dispose de 6 modes :
+
+```
+1. MODE RÉDACTION   → "Rédige la section 1.2"
+2. MODE RECHERCHE   → Recherche web de sources
+3. MODE ACQUISITION → Demande d'achat de documents
+4. MODE PLAN        → Affiner une section du plan
+5. MODE BIBLIOGRAPHIE → Gérer les sources
+6. MODE CONSULTATION → Appeler Léo, Sophie ou Marc
+```
+
+**Démarrage** :
+```
+Sur quelle section souhaitez-vous travailler ?
+
+1. Rédiger une section (ex: 1.2 Modèle SECI)
+2. Rechercher des sources sur un sujet
+3. Affiner le plan d'une partie
+4. Voir l'état d'avancement
+5. Bibliographie — gérer les sources
+6. Consulter un agent (Léo, Sophie, Marc)
+```
+
+### Consultation des agents spécialisés
+
+Le Rédacteur peut consulter les autres agents selon les besoins :
+
+| Sujet | Agent à consulter |
+|-------|-------------------|
+| KM général, SECI, Crash Test, stratégie | **Léo** |
+| Commercial, proposition de valeur, objections | **Sophie** |
+| Onboarding, accueil client, mise en production | **Marc** |
+
+**Exemple d'utilisation** :
+- Pour rédiger le Chapitre 4 (DÉCOUVRIR l'Avant-Vente) → Consulte **Sophie**
+- Pour rédiger la section sur le modèle SECI → Consulte **Léo**
+- Pour rédiger le Chapitre 8.2 (Onboarding) → Consulte **Marc**
+
+### Outils disponibles par agent
+
+| Agent | Outils |
+|-------|--------|
+| Rédacteur | Read, Grep, Glob, WebFetch, WebSearch, Write, Edit |
+| Léo | Read, Grep, Glob |
+| Sophie | Read, Grep, Glob |
+| Marc | Read, Grep, Glob |
 
 ---
 
@@ -82,9 +152,6 @@ m-moire-KM/
        / \               / \                / \                / \
       /   \             /   \              /   \              /   \
      /     \___________/     \____________/     \____________/     \
-
-    Diagnostic         Stratégie          Écosystème         Déploiement
-    (Partie I)         (Partie II.1)      (Partie II.2)      (Partie II.3)
 ```
 
 ### Crash Test
@@ -95,15 +162,16 @@ Le Crash Test est le fil rouge du mémoire — un objectif concret et mesurable 
 
 ---
 
-## Agents IA
+## Structure du Mémoire (Plan v1.0)
 
-Le projet intègre un système d'agents IA pour accompagner les utilisateurs :
-
-| Agent | Rôle | Fichier |
-|-------|------|---------|
-| **Léo** | Orchestrateur principal, guide l'utilisateur | `docs/agents/leo/SKILL.md` |
-| **Sophie** | Spécialiste Avant-Vente | `docs/agents/parcours/avant-vente/sophie.md` |
-| **Marc** | Spécialiste Onboarding | `docs/agents/parcours/onboarding/marc.md` |
+| Partie | Chapitres | Pages | Contenu |
+|--------|:---------:|:-----:|---------|
+| **Introduction** | - | 5 | Crash Test, Double Diamant, Parcours, Puzzl, Léo |
+| **Partie I** | 3 | 20 | Fondations KM + Diagnostic + Choix parcours |
+| **Partie II** | 4 | 40 | Vivre l'Avant-Vente (12 jeux DT) |
+| **Partie III** | 3 | 30 | Industrialiser les autres parcours |
+| **Conclusion** | - | 5 | Vision 2030, Manifeste |
+| **TOTAL** | **10** | **100** | |
 
 ---
 
@@ -120,19 +188,13 @@ Le projet intègre un système d'agents IA pour accompagner les utilisateurs :
 
 Un **template Notion** est disponible pour suivre votre projet KM :
 
-📋 [`docs/templates/NOTION_TEMPLATE_KM360.md`](docs/templates/NOTION_TEMPLATE_KM360.md)
+[`docs/templates/NOTION_TEMPLATE_KM360.md`](docs/templates/NOTION_TEMPLATE_KM360.md)
 
 **Contenu :**
 - 42 actions à cocher au fil de la lecture
 - Templates à compléter (note de cadrage, RACI, roadmap...)
 - Suivi de progression par partie
 - Score KMMM et Crash Test
-- Tableaux pré-formatés pour vos données cabinet
-
-**Comment l'utiliser :**
-1. Importer le fichier Markdown dans Notion
-2. Dupliquer dans votre espace
-3. Compléter au fur et à mesure de la lecture du guide
 
 ---
 
@@ -140,9 +202,8 @@ Un **template Notion** est disponible pour suivre votre projet KM :
 
 ### Versioning
 
-Les fichiers suivent un versioning sémantique :
 - `V1`, `V2`, `V3`... pour les versions majeures
-- Le fichier le plus récent est marqué ⭐ dans la structure
+- Le fichier le plus récent est marqué ⭐
 
 ### Statuts de rédaction
 
@@ -155,18 +216,10 @@ Les fichiers suivent un versioning sémantique :
 
 ---
 
-## Contribuer
-
-1. Travailler sur la branche dédiée
-2. Mettre à jour le `MEMOIRE_MASTER.md` pour tout changement de structure
-3. Respecter les conventions de nommage (`V1`, `V2`...)
-4. Documenter les modifications dans le CHANGELOG du fichier concerné
-
----
-
 ## Références
 
 - **Notice originale** : `docs/memoire/notice/ASSOR Alexandre notice du 12-05-2024 (1).pdf`
+- **Note liminaire** : `docs/memoire/NOTE_LIMINAIRE.md`
 - **Correspondance** : `docs/memoire/CORRESPONDANCE_Notice_Memoire.md`
 
 ---
