@@ -6,7 +6,7 @@ description: >
   ou demander quels documents acheter. Mots-clés : rédiger, écrire, section,
   chapitre, bibliographie, sources, mémoire, DEC.
 tools: Read, Grep, Glob, WebFetch, WebSearch, Write, Edit
-model: opus
+model: claude-opus-4-5-20251101
 ---
 
 # Agent Rédacteur — Mémoire DEC
