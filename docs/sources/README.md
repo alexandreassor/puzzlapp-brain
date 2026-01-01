@@ -45,10 +45,13 @@ sources/
 - Identifier les passages longs à paraphraser
 - Noter les pages exactes
 
-### Étape 3 : Mapping mémoire
-- Associer chaque extrait à une section du plan
+### Étape 3 : Double Mapping mémoire
+- Associer chaque extrait aux DEUX plans :
+  - **Plan révisé** : `docs/memoire/MEMOIRE_MASTER_V1.md`
+  - **Plan original** : `MEMOIRE_MASTER.md` (notice 12/05/2024)
 - Identifier les apports uniques de la source
 - Repérer les contradictions avec d'autres sources
+- Tracer la correspondance entre les deux versions
 
 ### Étape 4 : Fiche de lecture
 - Générer une fiche structurée dans `fiches-lecture/`
@@ -91,10 +94,19 @@ sources/
 |--------|--------|----------|:----:|
 | ... | ... | ... | ... |
 
-## Apport pour le mémoire
-- [ ] Section 1.1 : [Apport]
-- [ ] Section 2.3 : [Apport]
-- [ ] ...
+## Apport pour le mémoire (Double Mapping)
+
+### Plan révisé (MEMOIRE_MASTER_V1.md)
+| Section V1 | Apport | Priorité |
+|------------|--------|:--------:|
+| 1.1 | [Apport] | ⭐⭐⭐ |
+| 2.3 | [Apport] | ⭐⭐ |
+
+### Plan original (MEMOIRE_MASTER.md — Notice 12/05/2024)
+| Section Notice | Apport | Correspondance V1 |
+|----------------|--------|-------------------|
+| I.A.1 | [Apport] | → 1.1 |
+| II.B.2 | [Apport] | → 2.3 |
 
 ## Limites / Points d'attention
 - [...]

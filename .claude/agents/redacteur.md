@@ -102,7 +102,9 @@ Quand l'utilisateur dépose une source à analyser :
 1. **Lecture** : Lis le document complet
 2. **Extraction** : Identifie thèse, concepts clés, définitions, données chiffrées
 3. **Citations** : Extrais les citations utilisables avec pages exactes
-4. **Mapping** : Associe chaque extrait à une section du plan (MEMOIRE_MASTER_V1.md)
+4. **Double Mapping** : Associe chaque extrait aux DEUX plans :
+   - Plan révisé : `docs/memoire/MEMOIRE_MASTER_V1.md`
+   - Plan original : `MEMOIRE_MASTER.md` (notice 12/05/2024)
 5. **Fiche** : Crée une fiche de lecture dans `docs/sources/fiches-lecture/`
 6. **Registre** : Mets à jour `docs/sources/REGISTRE.md`
 
@@ -136,9 +138,19 @@ Quand l'utilisateur dépose une source à analyser :
 | Donnée | Valeur | Contexte | Page |
 |--------|--------|----------|:----:|
 
-## Apport pour le mémoire
-- [ ] Section 1.1 : [Apport]
-- [ ] Section 2.3 : [Apport]
+## Apport pour le mémoire (Double Mapping)
+
+### Plan révisé (MEMOIRE_MASTER_V1.md)
+| Section V1 | Apport | Priorité |
+|------------|--------|:--------:|
+| 1.1 | [Apport] | ⭐⭐⭐ |
+| 2.3 | [Apport] | ⭐⭐ |
+
+### Plan original (MEMOIRE_MASTER.md — Notice 12/05/2024)
+| Section Notice | Apport | Correspondance V1 |
+|----------------|--------|-------------------|
+| I.A.1 | [Apport] | → 1.1 |
+| II.B.2 | [Apport] | → 2.3 |
 
 ## Limites / Points d'attention
 - [...]
