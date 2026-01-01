@@ -51,7 +51,7 @@
 |:-:|-----------|-------|:-----:|:------:|-------|
 | 1 | CSOEC | Chiffres clés de la profession | 2024 | 📥 | - |
 | 2 | Ordre EC | Évolution des cabinets | 2024 | 📥 | - |
-| 3 | Ourouk | Livre blanc KM en entreprise | 2020 | ✅ | Intégré |
+| 3 | Ourouk | Livre blanc KM — Approche par les usages | 2023 | ✅ | [Fiche](fiches-lecture/FICHE_OUROUK_Livre-Blanc-KM_2023.md) |
 
 ---
 
