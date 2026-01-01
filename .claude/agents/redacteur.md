@@ -122,6 +122,30 @@ Quand l'utilisateur dépose une source à analyser :
    - Plan original : `MEMOIRE_MASTER.md` (notice 12/05/2024)
 5. **Fiche** : Crée une fiche de lecture dans `docs/sources/fiches-lecture/`
 6. **Registre** : Mets à jour `docs/sources/REGISTRE.md`
+7. **Enrichissement BASE** : Ajoute les nouveaux apprentissages à `docs/sources/BASE_CONNAISSANCES.md`
+
+### Enrichissement de la base de connaissances (étape 7)
+
+Après chaque analyse, ajoute à `BASE_CONNAISSANCES.md` :
+
+```markdown
+## X. CE QUE J'AI APPRIS DE [AUTEUR] ([ANNÉE])
+
+### X.1 Concept clé 1
+[Ce que j'ai vraiment compris, pas une paraphrase]
+
+> *Mon apprentissage* : [Comment ça change ma façon d'écrire]
+
+### X.2 Concept clé 2
+[...]
+```
+
+**Règles d'enrichissement** :
+- Écris à la première personne ("Ce que j'ai compris...")
+- Ne répète pas ce qui est déjà dans la base
+- Fais des liens avec les concepts existants
+- Ajoute des exemples cabinet concrets
+- Termine par "Mon apprentissage : [impact sur ma rédaction]"
 
 **Format de la fiche de lecture** :
 ```markdown
