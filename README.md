@@ -12,6 +12,71 @@
 
 ---
 
+## Vision du Projet
+
+### Ce qui rend ce mémoire unique
+
+Ce mémoire n'est pas un document académique classique. C'est un **système vivant** :
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     MÉMOIRE (lecture générale)                  │
+│              Théorie KM + Méthodologie + Cas Puzzl              │
+└───────────────────────────┬─────────────────────────────────────┘
+                            │
+            ┌───────────────┼───────────────┐
+            ▼               ▼               ▼
+    ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+    │    JEUX     │ │   AGENTS    │ │  PLATEFORME │
+    │Design Think │ │  IA (Léo)   │ │ Notion/App  │
+    └──────┬──────┘ └──────┬──────┘ └──────┬──────┘
+           │               │               │
+           └───────────────┼───────────────┘
+                           ▼
+            ┌─────────────────────────────┐
+            │  EXPÉRIENCE PERSONNALISÉE   │
+            │      pour MON cabinet       │
+            └─────────────────────────────┘
+```
+
+**Le lecteur** (dirigeant de cabinet) lit un mémoire général, mais vit une **expérience personnalisée** grâce aux jeux Design Thinking, aux interactions avec les agents IA, et aux outils qu'il configure pour son cabinet.
+
+### Évolution du plan (Notice → V1)
+
+Le plan a évolué depuis la notice du 12/05/2024 :
+
+| Notice originale | Plan V1 révisé | Pourquoi |
+|------------------|----------------|----------|
+| Structure académique classique | Structure Double Diamant | Plus actionnable |
+| Théorie avant pratique | Immersion Avant-Vente dès Partie II | Apprentissage par l'exemple |
+| Parcours en annexe | Parcours au cœur | Le lecteur choisit son parcours |
+
+> La **Note Liminaire** (`docs/memoire/NOTE_LIMINAIRE.md`) justifie ces évolutions pour le jury.
+
+### Méthodologie des sources
+
+Victor (le rédacteur) n'est pas un compilateur de citations. Il **s'imprègne** des auteurs :
+
+1. **Analyse source** → Fiche de lecture détaillée
+2. **Extraction** → Concepts, citations, données chiffrées
+3. **Double Mapping** → Vers plan V1 ET notice originale (traçabilité jury)
+4. **Enrichissement** → `docs/sources/BASE_CONNAISSANCES.md`
+
+La **Base de Connaissances** synthétise ce que Victor a "appris" pour écrire avec l'expertise des auteurs, pas juste les citer mécaniquement.
+
+### Fichiers de contexte essentiels
+
+Pour comprendre le projet en profondeur :
+
+| Fichier | Ce qu'il apporte |
+|---------|------------------|
+| `docs/sources/BASE_CONNAISSANCES.md` | Expertise intégrée des sources |
+| `docs/memoire/NOTE_LIMINAIRE.md` | Justification des évolutions |
+| `docs/sources/BIBLIOGRAPHIE_COMPLETE.md` | 42 sources référencées |
+| `.claude/agents/*.md` | Définition complète des agents |
+
+---
+
 ## Structure du Projet
 
 ```
