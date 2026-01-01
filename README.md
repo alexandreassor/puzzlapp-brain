@@ -49,6 +49,9 @@ m-moire-KM/
     │   ├── CORRESPONDANCE_*.md # Mapping notice → mémoire
     │   └── ARCHITECTURE_NARRATIVE_MEMOIRE.md
     │
+    ├── templates/             # Templates pour le lecteur
+    │   └── NOTION_TEMPLATE_KM360.md  # ⭐ Carnet de bord projet
+    │
     └── processus/             # Process books
         ├── PROCESS_BOOK_Avant_Vente.md
         ├── PARCOURS_DD_Avant_Vente.md
@@ -65,6 +68,7 @@ m-moire-KM/
 | `docs/frameworks/Framework_KM_360_V5.xlsx` | Framework Excel 40 onglets | V5 |
 | `docs/guides/Guide_KM_360_Academique_V2.md` | Guide académique complet | V2 |
 | `docs/memoire/PLAN_MEMOIRE_V3.md` | Plan restructuré (9 chapitres) | V3 |
+| `docs/templates/NOTION_TEMPLATE_KM360.md` | Carnet de bord lecteur (42 actions) | v1.0 |
 
 ---
 
@@ -109,6 +113,26 @@ Le projet intègre un système d'agents IA pour accompagner les utilisateurs :
 - **Pôles** : Expertise comptable, Audit, Social, Juridique
 - **Score KMMM initial** : 1.4/5
 - **Objectif** : Atteindre 3.2/5 en 6 mois
+
+---
+
+## Pour les Lecteurs : Carnet de Bord
+
+Un **template Notion** est disponible pour suivre votre projet KM :
+
+📋 [`docs/templates/NOTION_TEMPLATE_KM360.md`](docs/templates/NOTION_TEMPLATE_KM360.md)
+
+**Contenu :**
+- 42 actions à cocher au fil de la lecture
+- Templates à compléter (note de cadrage, RACI, roadmap...)
+- Suivi de progression par partie
+- Score KMMM et Crash Test
+- Tableaux pré-formatés pour vos données cabinet
+
+**Comment l'utiliser :**
+1. Importer le fichier Markdown dans Notion
+2. Dupliquer dans votre espace
+3. Compléter au fur et à mesure de la lecture du guide
 
 ---
 
