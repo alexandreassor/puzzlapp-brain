@@ -37,6 +37,13 @@
 | 13 | SVEIBY, Karl Erik | *The New Organizational Wealth: Managing and Measuring Knowledge-Based Assets* | Berrett-Koehler | 1997 | 🔍 | - |
 | 14 | EDVINSSON, Leif & MALONE, Michael S. | *Intellectual Capital: Realizing Your Company's True Value* | HarperBusiness | 1997 | 🔍 | - |
 | 15 | VENTURINO, Marcel | *Guide du product management* | Eyrolles | 2023 | 🔍 | - |
+| 16 | OHNO, Taiichi | *Toyota Production System: Beyond Large-Scale Production* | Productivity Press | 1988 | 📚 | - |
+| 17 | OHNO, Taiichi | *Taiichi Ohno's Workplace Management* | Gemba Press | 2012 | 📚 | - |
+| 18 | REASON, Peter & BRADBURY, Hilary | *The SAGE Handbook of Action Research: Participative Inquiry and Practice* (3e éd.) | SAGE | 2015 | 📚 | - |
+| 19 | WILLIAMS, Laurie & KESSLER, Robert | *Pair Programming Illuminated* | Addison-Wesley | 2003 | 📚 | - |
+| 20 | LAVE, Jean & WENGER, Etienne | *Situated Learning: Legitimate Peripheral Participation* | Cambridge University Press | 1991 | 📚 | - |
+| 21 | KONINCKX, Guy & TENEAU, Gilles | *Résilience organisationnelle : Rebondir face aux turbulences* | De Boeck | 2010 | 📚 | - |
+| 22 | LEMOINE, Claude & TENEAU, Gilles | *Toxic Handlers : Les générateurs de bienveillance en entreprise* | Odile Jacob | 2019 | 📚 | - |
 
 ---
 
@@ -46,8 +53,10 @@
 |:-:|--------|-------|-------|:-----:|:------:|
 | 1 | NONAKA, Ikujiro | « The Knowledge-Creating Company » | *Harvard Business Review* | 1991 | 📚 |
 | 2 | NONAKA, Ikujiro | « A Dynamic Theory of Organizational Knowledge Creation » | *Organization Science*, vol. 5, n° 1 | 1994 | 📚 |
-| 3 | GLOET, Marianne & TERZIOVSKI, Milé | « Exploring the relationship between knowledge management practices and innovation performance » | *Journal of Manufacturing Technology Management*, vol. 15, n° 5 | 2004 | 🔍 |
-| 4 | ERMINE, Jean-Louis | « Le knowledge management est un défi managérial à encourager » | *ANDRH*, n° 630 | 2024 | 🔍 |
+| 3 | DAVENPORT, Thomas H. & SHORT, James E. | « The New Industrial Engineering: Information Technology and Business Process Redesign » | *Sloan Management Review*, vol. 31 | 1990 | 📚 |
+| 4 | LEWIN, Kurt | « Action Research and Minority Problems » | *Journal of Social Issues*, vol. 2, n° 4 | 1946 | 📚 |
+| 5 | GLOET, Marianne & TERZIOVSKI, Milé | « Exploring the relationship between knowledge management practices and innovation performance » | *Journal of Manufacturing Technology Management*, vol. 15, n° 5 | 2004 | 🔍 |
+| 6 | ERMINE, Jean-Louis | « Le knowledge management est un défi managérial à encourager » | *ANDRH*, n° 630 | 2024 | 🔍 |
 
 ---
 
@@ -79,6 +88,12 @@
 | 3 | DAFSA | *Étude sur les axes de développement des cabinets d'expertise comptable* | 1998 | - | 🔍 |
 | 4 | XERFI | *Le marché de l'expertise comptable et de l'audit à l'horizon 2024* | 2022 | - | 🔍 |
 | 5 | IBM | « Qu'est-ce que la gestion des connaissances ? » | 2024 | [ibm.com](https://www.ibm.com/fr-fr/topics/knowledge-management) | 🌐 |
+| 6 | APQC | « Understanding Knowledge Mapping » | 2024 | [apqc.org](https://www.apqc.org/resource-library/resource/understanding-knowledge-mapping) | 🌐 |
+| 7 | APQC | « Knowledge Mapping in Action (Best Practices Report) » | 2024 | [apqc.org](https://www.apqc.org/resource-library/resource-listing/knowledge-mapping-action-best-practices-report) | 🌐 |
+| 8 | Design Council UK | « The Double Diamond » | 2019 | [designcouncil.org.uk](https://www.designcouncil.org.uk/our-resources/the-double-diamond/) | 🌐 |
+| 9 | Info-Tech Research Group | « Succession Planning and Knowledge Transfer » | 2024 | [continuitycentral.com](https://www.continuitycentral.com/index.php/news/resilience-news/8111-succession-planning-and-knowledge-transfer-are-key-aspects-of-organizational-resilience) | 🌐 |
+| 10 | TechMiners | « Bus Factor in Technical Departments » | 2025 | [techminers.com](https://www.techminers.com/knowledge/bus-factor-in-technical-departments) | 🌐 |
+| 11 | CEDIP (CMVRH) | *Faciliter la résilience organisationnelle — 8 recommandations managériales* | 2022 | `docs/sources/faciliterresilienceorganisationnelle.pdf` | ✅ |
 
 ---
 
@@ -125,16 +140,16 @@
 
 | Catégorie | Total | À acquérir | Web à extraire | Intégrées |
 |-----------|:-----:|:----------:|:--------------:|:---------:|
-| Ouvrages académiques | 15 | 4 | 0 | 0 |
-| Articles académiques | 4 | 2 | 0 | 0 |
+| Ouvrages académiques | 22 | 4 | 0 | 0 |
+| Articles académiques | 6 | 2 | 0 | 0 |
 | Mémoires DEC | 4 | 1 | 0 | 0 |
 | Autres mémoires | 1 | 0 | 1 | 0 |
-| Rapports professionnels | 5 | 3 | 2 | 0 |
+| Rapports professionnels | 11 | 3 | 7 | 2 |
 | Normes | 1 | 0 | 0 | 0 |
 | Articles web | 6 | 0 | 6 | 0 |
 | Vidéos | 4 | 0 | 4 | 0 |
 | Podcasts | 2 | 0 | 2 | 0 |
-| **TOTAL** | **42** | **10** | **15** | **0** |
+| **TOTAL** | **57** | **10** | **20** | **2** |
 
 ---
 
@@ -173,5 +188,5 @@ Les sources suivantes doivent être extraites et analysées en priorité :
 
 ---
 
-*Bibliographie compilée le 01/01/2026*
+*Bibliographie compilée le 05/01/2026*
 *À mettre à jour après chaque analyse de source*

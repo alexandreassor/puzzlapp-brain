@@ -83,6 +83,7 @@ Pour comprendre le projet en profondeur :
 m-moire-KM/
 │
 ├── MEMOIRE_MASTER.md              # Plan original (notice 12/05/2024)
+├── IDEES_VRAC.md                  # ⭐ Idées en vrac à organiser
 ├── README.md                      # Ce fichier
 │
 ├── .claude/
@@ -132,11 +133,37 @@ m-moire-KM/
 
 | Fichier | Rôle | Version |
 |---------|------|:-------:|
+| `IDEES_VRAC.md` | **Idées en vrac** — déposez vos notes, Victor les organisera | v1.0 |
 | `docs/memoire/MEMOIRE_MASTER_V1.md` | Plan détaillé révisé (100 pages, 10 chapitres) | v1.0 |
 | `docs/memoire/NOTE_LIMINAIRE.md` | Justification des évolutions pour le jury | v1.0 |
 | `MEMOIRE_MASTER.md` | Plan original fidèle à la notice | v0.2 |
 | `docs/frameworks/Framework_KM_360_V5.xlsx` | Framework Excel 40 onglets | V5 |
 | `docs/templates/NOTION_TEMPLATE_KM360.md` | Carnet de bord lecteur (42 actions) | v1.0 |
+
+---
+
+## Contribuer des Idées
+
+Le fichier [`IDEES_VRAC.md`](IDEES_VRAC.md) est votre **bloc-notes personnel** pour le projet.
+
+### Comment l'utiliser
+
+1. **Ouvrez le fichier** et ajoutez vos idées dans la section appropriée
+2. **Format libre** : phrases, mots-clés, liens, citations — tout est accepté
+3. **Demandez à Victor** : *"Organise mes idées en vrac"*
+4. **Victor intègre** chaque idée au bon endroit dans le projet
+
+### Thèmes disponibles
+
+- Mémoire (contenu, arguments)
+- Agents IA (comportements, nouvelles fonctionnalités)
+- Jeux Design Thinking
+- Framework KM 360°
+- Sources & Références
+- Application / Outils
+- Cabinet Puzzl (cas fil rouge)
+- Méthodologie
+- Non classé (si vous ne savez pas où mettre)
 
 ---
 
