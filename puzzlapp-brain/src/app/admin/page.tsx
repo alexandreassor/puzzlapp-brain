@@ -527,7 +527,12 @@ export function AdminPage() {
   return (
     <>
       <AdminLayout
-        title={viewMode === 'dashboard' ? 'Dashboard' : viewMode === 'documentation' ? 'Documentation' : undefined}
+        title={
+          viewMode === 'dashboard' ? 'Dashboard' :
+          viewMode === 'documentation' ? 'Documentation' :
+          viewMode === 'prompts' ? 'Prompts IA' :
+          undefined
+        }
         breadcrumb={breadcrumb.length > 0 ? breadcrumb : undefined}
         chapters={chapters}
         sections={sections}
@@ -548,7 +553,13 @@ export function AdminPage() {
           setSelectedChapterId(undefined);
           setSelectedSectionId(undefined);
         }}
+        onNavigatePrompts={() => {
+          setViewMode('prompts');
+          setSelectedChapterId(undefined);
+          setSelectedSectionId(undefined);
+        }}
         isDocumentationActive={viewMode === 'documentation'}
+        isPromptsActive={viewMode === 'prompts'}
       >
         {renderContent()}
       </AdminLayout>
