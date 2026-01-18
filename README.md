@@ -6,6 +6,46 @@
 
 ---
 
+## 🆕 PuzzlApp Brain — Outil d'Écriture
+
+Un outil d'écriture assisté par IA est en cours de développement pour optimiser la rédaction du mémoire.
+
+### Stack Technique
+
+| Technologie | Usage |
+|-------------|-------|
+| React + TypeScript | Framework |
+| TipTap | Éditeur riche Markdown |
+| Shadcn UI + Tailwind | Interface |
+| Zustand | Gestion d'état |
+| Vite | Build |
+
+### Architecture 3 Couches (inspiré Novel-OS)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  STANDARDS (invariant)                                      │
+│  └── Ton académique, structure DEC, normes citations        │
+├─────────────────────────────────────────────────────────────┤
+│  PROJET (spécifique mémoire)                                │
+│  └── Plan, 42 sources, décisions, configs agents            │
+├─────────────────────────────────────────────────────────────┤
+│  SESSION (éphémère)                                         │
+│  └── Section en cours, avancement, notes                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Fichiers
+
+| Fichier | Rôle |
+|---------|------|
+| `CLAUDE.md` | Contexte pour Claude Code |
+| `CLAUDE_TASKS.md` | Tâches de développement |
+
+> Voir `CLAUDE_TASKS.md` pour les instructions complètes.
+
+---
+
 ## Problématique
 
 > *Comment concevoir et déployer une stratégie de knowledge management augmenté pour accroître durablement la performance des cabinets d'expertise comptable ?*
@@ -53,41 +93,22 @@ Le plan a évolué depuis la notice du 12/05/2024 :
 
 > La **Note Liminaire** (`docs/memoire/NOTE_LIMINAIRE.md`) justifie ces évolutions pour le jury.
 
-### Méthodologie des sources
-
-Victor (le rédacteur) n'est pas un compilateur de citations. Il **s'imprègne** des auteurs :
-
-1. **Analyse source** → Fiche de lecture détaillée
-2. **Extraction** → Concepts, citations, données chiffrées
-3. **Double Mapping** → Vers plan V1 ET notice originale (traçabilité jury)
-4. **Enrichissement** → `docs/sources/BASE_CONNAISSANCES.md`
-
-La **Base de Connaissances** synthétise ce que Victor a "appris" pour écrire avec l'expertise des auteurs, pas juste les citer mécaniquement.
-
-### Fichiers de contexte essentiels
-
-Pour comprendre le projet en profondeur :
-
-| Fichier | Ce qu'il apporte |
-|---------|------------------|
-| `docs/sources/BASE_CONNAISSANCES.md` | Expertise intégrée des sources |
-| `docs/memoire/NOTE_LIMINAIRE.md` | Justification des évolutions |
-| `docs/sources/BIBLIOGRAPHIE_COMPLETE.md` | 42 sources référencées |
-| `.claude/agents/*.md` | Définition complète des agents |
-
 ---
 
 ## Structure du Projet
 
+> Voir [`STRUCTURE.md`](STRUCTURE.md) pour la documentation technique complète.
+
 ```
-m-moire-KM/
+DEC-KM/
 │
-├── MEMOIRE_MASTER.md              # Plan original (notice 12/05/2024)
-├── IDEES_VRAC.md                  # ⭐ Idées en vrac à organiser
 ├── README.md                      # Ce fichier
+├── STRUCTURE.md                   # Structure & conventions
+├── CLAUDE.md                      # 🆕 Contexte pour Claude Code
+├── CLAUDE_TASKS.md                # 🆕 Tâches développement
 │
 ├── .claude/
-│   └── agents/                    # ⭐ Agents Claude Code
+│   └── agents/                    # Agents Claude Code
 │       ├── redacteur.md           # Victor — Rédacteur mémoire DEC
 │       ├── architecte.md          # Jules — Architecte outils & UX
 │       ├── leo.md                 # Léo — Orchestrateur KM
@@ -95,36 +116,22 @@ m-moire-KM/
 │       └── marc.md                # Marc — Spécialiste Onboarding
 │
 └── docs/
+    ├── IDEES_VRAC.md              # Idées en vrac à organiser
+    │
     ├── agents/                    # Base de connaissances agents
-    │   ├── leo/                   # Références Léo
-    │   │   ├── SKILL.md           # Définition skill
-    │   │   ├── assets/            # Templates
-    │   │   └── references/        # Base de connaissances
-    │   ├── parcours/              # Agents spécialisés
-    │   │   ├── avant-vente/sophie.md
-    │   │   └── onboarding/marc.md
-    │   └── redacteur/SKILL.md     # Documentation rédacteur
-    │
     ├── frameworks/                # Fichiers Excel KM 360°
-    │   └── Framework_KM_360_V5.xlsx
-    │
-    ├── guides/                    # Documentation académique
-    │   └── Guide_KM_360_Academique_V2.md
-    │
+    │   └── Framework_KM_360_V5.xlsx  # ⭐ Version active
+    ├── guides/                    # Documentation & guides
     ├── jeux/                      # Jeux Design Thinking
-    │   └── JEUX_AVANT_VENTE_COMPLET.md
-    │
-    ├── memoire/                   # Versions du mémoire
-    │   ├── notice/                # Notice originale PDF
-    │   ├── MEMOIRE_MASTER_V1.md   # ⭐ Plan révisé v1.0
-    │   ├── NOTE_LIMINAIRE.md      # ⭐ Justification jury
-    │   └── CORRESPONDANCE_*.md    # Mapping notice → mémoire
-    │
-    ├── templates/                 # Templates lecteur
-    │   └── NOTION_TEMPLATE_KM360.md
-    │
-    └── processus/                 # Process books
-        └── PROCESS_BOOK_Avant_Vente.md
+    ├── memoire/                   # Mémoire DEC
+    │   ├── MEMOIRE_KM_360_COMPLET.md   # ⭐ Version finale
+    │   ├── MEMOIRE_MASTER_V1.md        # Plan révisé
+    │   └── NOTE_LIMINAIRE.md           # Justification jury
+    ├── processus/                 # Process books
+    ├── sources/                   # Bibliographie & PDF sources
+    │   └── BASE_CONNAISSANCES.md      # 42 sources indexées
+    ├── templates/                 # Templates réutilisables
+    └── _archive/                  # Anciennes versions (ignoré)
 ```
 
 ---
@@ -133,57 +140,25 @@ m-moire-KM/
 
 | Fichier | Rôle | Version |
 |---------|------|:-------:|
-| `IDEES_VRAC.md` | **Idées en vrac** — déposez vos notes, Victor les organisera | v1.0 |
-| `docs/memoire/MEMOIRE_MASTER_V1.md` | Plan détaillé révisé (100 pages, 10 chapitres) | v1.0 |
-| `docs/memoire/NOTE_LIMINAIRE.md` | Justification des évolutions pour le jury | v1.0 |
-| `MEMOIRE_MASTER.md` | Plan original fidèle à la notice | v0.2 |
+| `CLAUDE.md` | Contexte projet pour Claude Code | 🆕 v1.0 |
+| `CLAUDE_TASKS.md` | Tâches de développement | 🆕 v1.0 |
+| `docs/memoire/MEMOIRE_KM_360_COMPLET.md` | **Mémoire complet** | ⭐ |
+| `docs/memoire/MEMOIRE_MASTER_V1.md` | Plan détaillé (100 pages, 10 chapitres) | v1.0 |
+| `docs/memoire/NOTE_LIMINAIRE.md` | Justification évolutions jury | v1.0 |
 | `docs/frameworks/Framework_KM_360_V5.xlsx` | Framework Excel 40 onglets | V5 |
-| `docs/templates/NOTION_TEMPLATE_KM360.md` | Carnet de bord lecteur (42 actions) | v1.0 |
-
----
-
-## Contribuer des Idées
-
-Le fichier [`IDEES_VRAC.md`](IDEES_VRAC.md) est votre **bloc-notes personnel** pour le projet.
-
-### Comment l'utiliser
-
-1. **Ouvrez le fichier** et ajoutez vos idées dans la section appropriée
-2. **Format libre** : phrases, mots-clés, liens, citations — tout est accepté
-3. **Demandez à Victor** : *"Organise mes idées en vrac"*
-4. **Victor intègre** chaque idée au bon endroit dans le projet
-
-### Thèmes disponibles
-
-- Mémoire (contenu, arguments)
-- Agents IA (comportements, nouvelles fonctionnalités)
-- Jeux Design Thinking
-- Framework KM 360°
-- Sources & Références
-- Application / Outils
-- Cabinet Puzzl (cas fil rouge)
-- Méthodologie
-- Non classé (si vous ne savez pas où mettre)
+| `docs/sources/BASE_CONNAISSANCES.md` | Sources bibliographiques | v1.0 |
 
 ---
 
 ## Agents Claude Code
 
-Le projet intègre un système d'agents IA sous **Claude Opus 4.5** pour accompagner la rédaction du mémoire.
-
-### Installation
-
-Les agents sont situés dans `.claude/agents/` et sont automatiquement reconnus par Claude Code.
-
-### Agents disponibles
-
-| Agent | Rôle | Modèle | Fichier |
-|-------|------|:------:|---------|
-| **Victor** | Rédacteur du mémoire DEC | Opus 4.5 | `.claude/agents/redacteur.md` |
-| **Jules** | Architecte outils & expérience UX | Opus 4.5 | `.claude/agents/architecte.md` |
-| **Léo** | Orchestrateur KM, stratégie, SECI | Opus 4.5 | `.claude/agents/leo.md` |
-| **Sophie** | Spécialiste Avant-Vente | Opus 4.5 | `.claude/agents/sophie.md` |
-| **Marc** | Spécialiste Onboarding | Opus 4.5 | `.claude/agents/marc.md` |
+| Agent | Rôle | Fichier |
+|-------|------|---------|
+| **Victor** | Rédacteur du mémoire DEC | `.claude/agents/redacteur.md` |
+| **Jules** | Architecte outils & expérience UX | `.claude/agents/architecte.md` |
+| **Léo** | Orchestrateur KM, stratégie, SECI | `.claude/agents/leo.md` |
+| **Sophie** | Spécialiste Avant-Vente | `.claude/agents/sophie.md` |
+| **Marc** | Spécialiste Onboarding | `.claude/agents/marc.md` |
 
 ### Utilisation de Victor (Rédacteur)
 
@@ -199,61 +174,13 @@ L'agent **Victor** est le rédacteur principal du mémoire. Il dispose de 7 mode
 7. MODE ANALYSE      → Analyser une source PDF
 ```
 
-**Démarrage** :
-```
-Sur quelle section souhaitez-vous travailler ?
-
-1. Rédiger une section (ex: 1.2 Modèle SECI)
-2. Rechercher des sources sur un sujet
-3. Affiner le plan d'une partie
-4. Voir l'état d'avancement
-5. Bibliographie — gérer les sources
-6. Consulter un agent (Léo, Sophie, Marc)
-7. Analyser une source (PDF dans docs/sources/)
-```
-
-### Utilisation de Jules (Architecte)
-
-L'agent **Jules** conçoit et développe les outils du projet KM 360°. Il dispose de 5 modes :
-
-```
-1. MODE NOTION       → Templates et espaces Notion
-2. MODE REACT NATIVE → Composants et écrans mobile
-3. MODE MCP          → Intégrations Model Context Protocol
-4. MODE JEUX         → Jeux Design Thinking avec supports
-5. MODE DASHBOARD    → Tableaux de bord et visualisations
-```
-
-**Architecture cible** :
-- Frontend : React Native + Expo
-- Backend : Supabase (Auth, Database, Storage)
-- IA : Claude API + agents (Léo, Sophie, Marc)
-- Intégrations : MCP (Notion, Google, outils métier)
-
 ### Consultation des agents spécialisés
-
-Victor peut consulter les autres agents selon les besoins :
 
 | Sujet | Agent à consulter |
 |-------|-------------------|
 | KM général, SECI, Crash Test, stratégie | **Léo** |
 | Commercial, proposition de valeur, objections | **Sophie** |
 | Onboarding, accueil client, mise en production | **Marc** |
-
-**Exemple d'utilisation** :
-- Pour rédiger le Chapitre 4 (DÉCOUVRIR l'Avant-Vente) → Consulte **Sophie**
-- Pour rédiger la section sur le modèle SECI → Consulte **Léo**
-- Pour rédiger le Chapitre 8.2 (Onboarding) → Consulte **Marc**
-
-### Outils disponibles par agent
-
-| Agent | Outils |
-|-------|--------|
-| Victor | Read, Grep, Glob, WebFetch, WebSearch, Write, Edit |
-| Jules | Read, Grep, Glob, Write, Edit, WebSearch, WebFetch |
-| Léo | Read, Grep, Glob |
-| Sophie | Read, Grep, Glob |
-| Marc | Read, Grep, Glob |
 
 ---
 
@@ -299,20 +226,6 @@ Le Crash Test est le fil rouge du mémoire — un objectif concret et mesurable 
 
 ---
 
-## Pour les Lecteurs : Carnet de Bord
-
-Un **template Notion** est disponible pour suivre votre projet KM :
-
-[`docs/templates/NOTION_TEMPLATE_KM360.md`](docs/templates/NOTION_TEMPLATE_KM360.md)
-
-**Contenu :**
-- 42 actions à cocher au fil de la lecture
-- Templates à compléter (note de cadrage, RACI, roadmap...)
-- Suivi de progression par partie
-- Score KMMM et Crash Test
-
----
-
 ## Conventions
 
 ### Versioning
@@ -339,4 +252,4 @@ Un **template Notion** est disponible pour suivre votre projet KM :
 
 ---
 
-*Dernière mise à jour : Janvier 2026*
+*Dernière mise à jour : 16 janvier 2026*

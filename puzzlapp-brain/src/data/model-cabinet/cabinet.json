@@ -1,0 +1,58 @@
+{
+  "id": "cab-trajectoire-001",
+  "name": "TRAJECTOIRE CONSEIL",
+  "slogan": "Faire grandir les entrepreneurs",
+  "locations": [
+    {
+      "city": "Lyon",
+      "address": "45 rue de la République, 69002 Lyon",
+      "type": "siege",
+      "employees_count": 48
+    },
+    {
+      "city": "Villeurbanne",
+      "address": "12 cours Émile Zola, 69100 Villeurbanne",
+      "type": "antenne",
+      "employees_count": 12
+    }
+  ],
+  "employees_count": 60,
+  "revenue": "4.8M€",
+  "founded": 2003,
+  "history": "Fondé en 2003 par Pierre DUVAL, expert-comptable et commissaire aux comptes, TRAJECTOIRE CONSEIL est né de la volonté d'accompagner les entrepreneurs dans leur croissance. Le cabinet a connu une croissance régulière, passant de 5 collaborateurs à 45 en 2022. En 2023, l'intégration du cabinet MERCIER & ASSOCIÉS (8 personnes, spécialisé en audit) a porté l'effectif à 53 personnes. L'arrivée de Marie LAURENT comme associée en 2018 a accéléré la digitalisation. Aujourd'hui, le cabinet compte 60 collaborateurs mais fait face à des défis majeurs : transmission des savoirs, turnover, et intégration des équipes fusionnées.",
+  "values": [
+    "Excellence technique",
+    "Proximité client",
+    "Innovation responsable",
+    "Transmission des savoirs",
+    "Esprit d'équipe"
+  ],
+  "kmmm_score": 1.6,
+  "kmmm_target": 3.2,
+  "challenges": [
+    "Départ prévu de Françoise DUPONT (responsable paie, 25 ans d'expérience) dans 18 mois",
+    "Turnover élevé : 4 départs en 2025 dont 2 collaborateurs clés",
+    "Onboarding lent : 12 mois pour rendre un collaborateur autonome (objectif : 6 mois)",
+    "Silos entre pôles : l'audit et l'expertise comptable ne partagent pas leurs méthodes",
+    "Savoirs tacites non documentés : tout est dans les têtes",
+    "Fusion mal digérée : les équipes ex-MERCIER restent isolées",
+    "Outils dispersés : serveur, mails, Teams, notes papier, Excel personnel",
+    "Facturation électronique : personne ne maîtrise vraiment le sujet",
+    "Période fiscale chaotique : mêmes questions chaque année",
+    "Clients mécontents lors des changements de collaborateur"
+  ],
+  "tools_current": [
+    "Sage Production Compta (logiciel métier)",
+    "ACD (logiciel paie)",
+    "RevisAudit Premium (audit)",
+    "Microsoft 365 (mails, Teams)",
+    "Serveur de fichiers Windows (GED basique)",
+    "Excel (beaucoup trop d'Excel)",
+    "WhatsApp (échanges informels)",
+    "Papier (notes, post-it, classeurs)"
+  ],
+  "certifications": [
+    "ISO 9001 (obtenue en 2019, renouvellement difficile)",
+    "Visa Fiscal (tous les EC)"
+  ]
+}

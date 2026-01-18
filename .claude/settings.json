@@ -1,0 +1,31 @@
+{
+  "$schema": "https://claude.ai/schemas/claude-code-settings.json",
+  "project": {
+    "name": "KM 360°",
+    "description": "Plateforme SaaS Knowledge Management pour cabinets comptables",
+    "version": "1.0.0"
+  },
+  "agents": {
+    "orchestrator": "marco-lead",
+    "team": {
+      "dev": ["hugo-backend", "louise-frontend", "theo-qa", "sonia-security"],
+      "km": ["redacteur", "architecte", "leo", "sophie", "marc"],
+      "data": ["nadia-data"]
+    }
+  },
+  "model": {
+    "default": "claude-opus-4-5-20251101",
+    "agents": "claude-opus-4-5-20251101"
+  },
+  "skills": {
+    "enabled": [
+      "supabase-patterns",
+      "react-native-patterns",
+      "typescript-strict",
+      "saas-security"
+    ]
+  },
+  "commands": {
+    "prefixes": ["equipe", "debug"]
+  }
+}

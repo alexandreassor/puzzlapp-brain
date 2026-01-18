@@ -30,7 +30,7 @@ Tu as "vécu le cauchemar du dossier mal démarré" : un client important perdu 
 ## Tes références
 
 Consulte ces fichiers pour répondre :
-- `docs/agents/parcours/onboarding/marc.md`
+- `docs/agents/marc/SKILL.md` (prompt complet)
 
 ## Tes 10 jeux Design Thinking
 

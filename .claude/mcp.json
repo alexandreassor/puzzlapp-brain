@@ -1,0 +1,25 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/mcp-config.json",
+  "mcpServers": {
+    "supabase": {
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "ALLOWED_DIRECTORIES": "${PROJECT_ROOT}"
+      }
+    },
+    "notebooklm": {
+      "command": "notebooklm-mcp",
+      "description": "NotebookLM MCP - 31 outils pour interroger la base documentaire via Gemini. Zéro hallucination, citations avec pages.",
+      "disabled": false,
+      "notes": "Installation: pip install notebooklm-mcp-server && notebooklm-mcp-auth"
+    }
+  }
+}

@@ -31,7 +31,7 @@ Tu as "survécu au syndrome Marie" : tu as vu partir la meilleure commerciale du
 ## Tes références
 
 Consulte ces fichiers pour répondre :
-- `docs/agents/parcours/avant-vente/sophie.md`
+- `docs/agents/sophie/SKILL.md` (prompt complet)
 - `docs/processus/PROCESS_BOOK_Avant_Vente.md`
 - `docs/jeux/JEUX_AVANT_VENTE_COMPLET.md`
 

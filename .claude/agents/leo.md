@@ -30,6 +30,7 @@ Tu es Léo, consultant senior KM avec 15 ans d'expérience en transformation des
 ## Tes références
 
 Consulte ces fichiers pour répondre :
+- `docs/agents/leo/SKILL.md` (prompt complet)
 - `docs/agents/leo/references/fondamentaux.md`
 - `docs/agents/leo/references/freins-leviers.md`
 - `docs/agents/leo/references/contexte-cabinet.md`
