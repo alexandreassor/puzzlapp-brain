@@ -1,0 +1,161 @@
+[
+  {
+    "id": "proc-001",
+    "name": "Clôture annuelle client",
+    "department": "expertise_comptable",
+    "description": "Processus de révision et clôture des comptes annuels pour les clients TPE/PME.",
+    "status": "partial",
+    "owner": "Sophie MARTIN",
+    "pain_points": [
+      "Checklist différente selon le collaborateur",
+      "Points de contrôle non standardisés",
+      "Mêmes erreurs récurrentes chaque année",
+      "Nouveaux collaborateurs perdus"
+    ],
+    "current_tools": ["Sage Production", "Excel perso", "Notes papier"],
+    "frequency": "yearly",
+    "criticality": "critical",
+    "km_opportunity": "Créer une checklist de clôture unifiée avec points de contrôle obligatoires et FAQ des erreurs fréquentes."
+  },
+  {
+    "id": "proc-002",
+    "name": "Intégration nouveau collaborateur",
+    "department": "support",
+    "description": "Processus d'accueil et formation des nouveaux arrivants.",
+    "status": "undocumented",
+    "owner": "Marie LAURENT",
+    "pain_points": [
+      "Pas de parcours d'intégration formalisé",
+      "Formation sur le tas uniquement",
+      "Seniors pas disponibles pour former",
+      "12 mois pour être autonome (vs 6 souhaités)"
+    ],
+    "current_tools": ["Aucun", "Oral uniquement"],
+    "frequency": "on_demand",
+    "criticality": "high",
+    "km_opportunity": "Parcours d'intégration structuré avec étapes, supports, et référent dédié. Wiki des bases métier."
+  },
+  {
+    "id": "proc-003",
+    "name": "Transmission de dossier client",
+    "department": "expertise_comptable",
+    "description": "Transfert d'un portefeuille client d'un collaborateur à un autre.",
+    "status": "undocumented",
+    "owner": null,
+    "pain_points": [
+      "Tout était dans la tête du précédent",
+      "Client doit tout réexpliquer",
+      "Spécificités non documentées",
+      "Historique perdu"
+    ],
+    "current_tools": ["Échange oral", "Mails épars"],
+    "frequency": "on_demand",
+    "criticality": "critical",
+    "km_opportunity": "Fiche de passation standardisée avec historique, spécificités, contacts clés, et points de vigilance."
+  },
+  {
+    "id": "proc-004",
+    "name": "Réponse aux questions clients récurrentes",
+    "department": "expertise_comptable",
+    "description": "Traitement des demandes fréquentes des clients (attestations, échéances, procédures).",
+    "status": "undocumented",
+    "owner": null,
+    "pain_points": [
+      "Mêmes questions posées 100 fois",
+      "Chaque collaborateur répond à sa façon",
+      "Pas de FAQ partagée",
+      "Temps perdu à rédiger les mêmes réponses"
+    ],
+    "current_tools": ["Mails individuels"],
+    "frequency": "daily",
+    "criticality": "medium",
+    "km_opportunity": "FAQ client avec réponses types. Base de templates de mails. Chatbot interne."
+  },
+  {
+    "id": "proc-005",
+    "name": "Paie BTP",
+    "department": "social_paie",
+    "description": "Établissement des paies pour le secteur BTP avec conventions spécifiques.",
+    "status": "undocumented",
+    "owner": "Françoise DUPONT",
+    "pain_points": [
+      "Tout est dans la tête de Françoise",
+      "Aucune documentation des cas particuliers",
+      "Juniors incapables de traiter les cas complexes",
+      "Départ de Françoise = catastrophe"
+    ],
+    "current_tools": ["ACD", "Notes manuscrites de Françoise"],
+    "frequency": "monthly",
+    "criticality": "critical",
+    "km_opportunity": "URGENCE : Capitaliser le savoir de Françoise avant son départ. Fiches conventions, cas types, pièges à éviter."
+  },
+  {
+    "id": "proc-006",
+    "name": "Audit légal",
+    "department": "audit",
+    "description": "Mission d'audit légal (CAC) avec respect des NEP.",
+    "status": "partial",
+    "owner": "Julien BERNARD",
+    "pain_points": [
+      "Méthodes différentes entre historiques et ex-MERCIER",
+      "Pas de capitalisation des dossiers types",
+      "Chaque auditeur réinvente sa feuille de travail"
+    ],
+    "current_tools": ["RevisAudit Premium", "Excel", "Word"],
+    "frequency": "yearly",
+    "criticality": "high",
+    "km_opportunity": "Harmoniser les méthodes. Créer une bibliothèque de feuilles de travail types par secteur."
+  },
+  {
+    "id": "proc-007",
+    "name": "Veille réglementaire",
+    "department": "expertise_comptable",
+    "description": "Suivi des évolutions fiscales, sociales et comptables.",
+    "status": "partial",
+    "owner": null,
+    "pain_points": [
+      "Chacun fait sa veille dans son coin",
+      "Pas de diffusion structurée",
+      "Facture électronique : personne ne maîtrise vraiment",
+      "Nouveautés fiscales mal communiquées"
+    ],
+    "current_tools": ["Newsletters individuelles", "Revue Fiduciaire"],
+    "frequency": "weekly",
+    "criticality": "high",
+    "km_opportunity": "Flash info hebdo. Référent thématique identifié. Base des positions du cabinet."
+  },
+  {
+    "id": "proc-008",
+    "name": "Assemblées générales",
+    "department": "juridique",
+    "description": "Organisation et documentation des AG ordinaires et extraordinaires.",
+    "status": "documented",
+    "owner": "Nathalie ROUX",
+    "pain_points": [
+      "Documentation existante mais isolée",
+      "Pas partagée avec les autres pôles",
+      "Sollicitations en urgence"
+    ],
+    "current_tools": ["Word templates", "GED juridique"],
+    "frequency": "yearly",
+    "criticality": "medium",
+    "km_opportunity": "Partager les templates avec la compta pour les cas simples. Clarifier le workflow AG."
+  },
+  {
+    "id": "proc-009",
+    "name": "Conseil digital client",
+    "department": "conseil_digital",
+    "description": "Accompagnement des clients dans leur transformation digitale (Pennylane, automatisation).",
+    "status": "partial",
+    "owner": "Thomas PETIT",
+    "pain_points": [
+      "Thomas documente bien MAIS personne ne lit",
+      "Romain a créé une base Notion isolée",
+      "Pas de capitalisation des projets réussis"
+    ],
+    "current_tools": ["Notion (Romain)", "Word (Thomas)"],
+    "frequency": "on_demand",
+    "criticality": "medium",
+    "km_opportunity": "Unifier la documentation. Créer des cas clients réussis à partager. Former les autres pôles."
+  }
+]

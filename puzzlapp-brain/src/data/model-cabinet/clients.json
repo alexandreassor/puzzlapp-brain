@@ -1,0 +1,202 @@
+[
+  {
+    "id": "cli-001",
+    "name": "BATILYON Construction",
+    "sector": "btp",
+    "size": "pme",
+    "employees_count": 85,
+    "revenue": "12M€",
+    "missions": ["Comptabilité", "Paie (45 salariés)", "Déclarations fiscales", "Conseil gestion"],
+    "relationship_years": 18,
+    "key_contact": "Jean-Marc DUFOUR, Gérant",
+    "assigned_manager": "Sophie MARTIN",
+    "specifics": [
+      "Convention collective BTP",
+      "Chantiers multiples",
+      "Sous-traitance importante",
+      "Autoliquidation TVA"
+    ],
+    "satisfaction_level": 4,
+    "km_relevance": "Dossier historique de Françoise DUPONT en paie. Si elle part, personne ne connaît les spécificités (primes, indemnités BTP, intempéries)."
+  },
+  {
+    "id": "cli-002",
+    "name": "Le Comptoir Lyonnais",
+    "sector": "hcr",
+    "size": "pme",
+    "employees_count": 35,
+    "revenue": "2.8M€",
+    "missions": ["Comptabilité", "Paie HCR", "Déclarations", "Tableaux de bord"],
+    "relationship_years": 12,
+    "key_contact": "Marie-Claire BONNET, Gérante",
+    "assigned_manager": "Sophie MARTIN",
+    "specifics": [
+      "Convention HCR",
+      "Avantages en nature",
+      "Saisonnalité forte",
+      "Titres restaurant"
+    ],
+    "satisfaction_level": 3,
+    "km_relevance": "Client mécontent lors du dernier changement de collaborateur. A dû réexpliquer tout son fonctionnement. Historique non documenté."
+  },
+  {
+    "id": "cli-003",
+    "name": "INNOV'TECH Solutions",
+    "sector": "tech",
+    "size": "pme",
+    "employees_count": 25,
+    "revenue": "3.5M€",
+    "missions": ["Comptabilité", "Conseil création", "CIR", "Levée de fonds"],
+    "relationship_years": 4,
+    "key_contact": "Thomas LEGRAND, CEO",
+    "assigned_manager": "Thomas PETIT",
+    "specifics": [
+      "Start-up en croissance",
+      "CIR/CII complexe",
+      "Stock-options",
+      "Reporting investisseurs"
+    ],
+    "satisfaction_level": 5,
+    "km_relevance": "Client géré par le pôle Conseil Digital. Exemple de bonne documentation par Thomas PETIT. Modèle à répliquer."
+  },
+  {
+    "id": "cli-004",
+    "name": "Groupe SANTÉ PLUS",
+    "sector": "sante",
+    "size": "eti",
+    "employees_count": 450,
+    "revenue": "45M€",
+    "missions": ["Audit légal (3 entités)", "Consolidation", "CAC"],
+    "relationship_years": 8,
+    "key_contact": "Philippe MARTEL, DAF",
+    "assigned_manager": "Julien BERNARD",
+    "specifics": [
+      "Groupe de cliniques",
+      "Consolidation complexe",
+      "Normes secteur santé",
+      "Conventions réglementées"
+    ],
+    "satisfaction_level": 4,
+    "km_relevance": "Expertise audit santé concentrée sur David LAMBERT. Si départ, expertise perdue. Pas de documentation des spécificités sectorielles."
+  },
+  {
+    "id": "cli-005",
+    "name": "SCI LES TERRASSES",
+    "sector": "immobilier",
+    "size": "tpe",
+    "employees_count": 0,
+    "revenue": "850K€ (loyers)",
+    "missions": ["Comptabilité SCI", "Déclarations", "Conseil patrimonial"],
+    "relationship_years": 22,
+    "key_contact": "Famille DURAND (3 associés)",
+    "assigned_manager": "Michel GARNIER",
+    "specifics": [
+      "SCI familiale",
+      "Option IS",
+      "15 biens locatifs",
+      "Transmission en cours"
+    ],
+    "satisfaction_level": 5,
+    "km_relevance": "Dossier de Michel GARNIER depuis 22 ans. Tout est dans sa tête. Pierre DUVAL seul autre à connaître le dossier. Risque majeur."
+  },
+  {
+    "id": "cli-006",
+    "name": "MECALYON Industries",
+    "sector": "industrie",
+    "size": "pme",
+    "employees_count": 120,
+    "revenue": "18M€",
+    "missions": ["Audit légal", "Comptabilité", "Conseil"],
+    "relationship_years": 3,
+    "key_contact": "Marc WEBER, DG",
+    "assigned_manager": "Antoine MERCIER",
+    "specifics": [
+      "Client ex-MERCIER",
+      "Sous-traitance automobile",
+      "Comptabilité analytique",
+      "Stocks importants"
+    ],
+    "satisfaction_level": 3,
+    "km_relevance": "Client venu avec la fusion MERCIER. Méthodes différentes. Équipe ex-MERCIER seule à maîtriser le dossier. Pas d'intégration aux méthodes TRAJECTOIRE."
+  },
+  {
+    "id": "cli-007",
+    "name": "Cabinet Dr MARTIN et Associés",
+    "sector": "profession_liberale",
+    "size": "tpe",
+    "employees_count": 8,
+    "revenue": "1.2M€",
+    "missions": ["Comptabilité BNC", "Déclarations 2035", "Gestion cabinet"],
+    "relationship_years": 15,
+    "key_contact": "Dr Pierre MARTIN",
+    "assigned_manager": "Marine PETIT",
+    "specifics": [
+      "Cabinet médical",
+      "SCM",
+      "CARMF/URSSAF spécifiques",
+      "Rétrocessions"
+    ],
+    "satisfaction_level": 4,
+    "km_relevance": "Expertise BNC de Marine PETIT non reconnue ni partagée. Elle gère seule tous les dossiers médicaux. Pas de backup."
+  },
+  {
+    "id": "cli-008",
+    "name": "Association SOLIDARITÉ LYON",
+    "sector": "association",
+    "size": "pme",
+    "employees_count": 25,
+    "revenue": "2M€ (subventions + dons)",
+    "missions": ["Comptabilité associative", "CAC", "Fonds dédiés"],
+    "relationship_years": 10,
+    "key_contact": "Marie FONTAINE, Directrice",
+    "assigned_manager": "Julien BERNARD",
+    "specifics": [
+      "Plan comptable associatif",
+      "Fonds dédiés",
+      "Subventions",
+      "Rapport annuel"
+    ],
+    "satisfaction_level": 4,
+    "km_relevance": "Comptabilité associative = expertise rare. Pas de documentation des spécificités (fonds dédiés, emplois ressources)."
+  },
+  {
+    "id": "cli-009",
+    "name": "PRIMEUR SERVICES",
+    "sector": "commerce",
+    "size": "tpe",
+    "employees_count": 12,
+    "revenue": "1.5M€",
+    "missions": ["Comptabilité", "Paie", "Déclarations"],
+    "relationship_years": 6,
+    "key_contact": "Ali BENALI, Gérant",
+    "assigned_manager": "Paul GIRARD",
+    "specifics": [
+      "Commerce alimentaire",
+      "Marges serrées",
+      "TVA 5.5%/20%",
+      "Multi-établissements"
+    ],
+    "satisfaction_level": 4,
+    "km_relevance": "Dossier bien documenté par Paul GIRARD mais notes dans ses fichiers personnels. Pas partagé."
+  },
+  {
+    "id": "cli-010",
+    "name": "HOLDING DURAND PATRIMOINE",
+    "sector": "immobilier",
+    "size": "pme",
+    "employees_count": 2,
+    "revenue": "4M€",
+    "missions": ["Consolidation", "Fiscalité groupe", "Conseil patrimonial"],
+    "relationship_years": 20,
+    "key_contact": "François DURAND, Président",
+    "assigned_manager": "Michel GARNIER",
+    "specifics": [
+      "Holding + 5 SCI",
+      "Intégration fiscale",
+      "Transmission patrimoniale",
+      "Démembrement"
+    ],
+    "satisfaction_level": 5,
+    "km_relevance": "Dossier stratégique. Toute la complexité fiscale est dans la tête de Michel GARNIER. Pierre DUVAL supervise mais ne maîtrise pas les détails."
+  }
+]
