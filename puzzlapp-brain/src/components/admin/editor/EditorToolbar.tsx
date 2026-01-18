@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import type { Editor } from '@tiptap/react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -7,9 +8,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { parseMarkdownFile } from '@/services/markdownImport';
 
 interface EditorToolbarProps {
   editor: Editor | null;
+  onOpenFigureUploader?: () => void;
 }
 
 interface ToolbarButtonProps {
@@ -43,10 +46,27 @@ function ToolbarButton({ onClick, isActive, disabled, tooltip, children }: Toolb
   );
 }
 
-export function EditorToolbar({ editor }: EditorToolbarProps) {
+export function EditorToolbar({ editor, onOpenFigureUploader }: EditorToolbarProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   if (!editor) {
     return null;
   }
+
+  const handleFileImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !editor) return;
+
+    try {
+      const html = await parseMarkdownFile(file);
+      editor.chain().focus().setContent(html).run();
+    } catch (error) {
+      alert(error instanceof Error ? error.message : 'Erreur lors de l\'import');
+    }
+
+    // Reset pour permettre de réimporter le même fichier
+    e.target.value = '';
+  };
 
   const addLink = () => {
     const url = window.prompt('URL du lien:');
@@ -182,10 +202,19 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
 
       <ToolbarButton
         onClick={addImage}
-        tooltip="Ajouter une image"
+        tooltip="Ajouter une image (URL)"
       >
         <span className="text-xs">🖼</span>
       </ToolbarButton>
+
+      {onOpenFigureUploader && (
+        <ToolbarButton
+          onClick={onOpenFigureUploader}
+          tooltip="Insérer une figure (upload)"
+        >
+          <span className="text-xs">📷</span>
+        </ToolbarButton>
+      )}
 
       <Separator orientation="vertical" className="mx-1 h-6" />
 
@@ -205,6 +234,25 @@ export function EditorToolbar({ editor }: EditorToolbarProps) {
       >
         <span className="text-xs">↪</span>
       </ToolbarButton>
+
+      <Separator orientation="vertical" className="mx-1 h-6" />
+
+      {/* Import Markdown */}
+      <ToolbarButton
+        onClick={() => fileInputRef.current?.click()}
+        tooltip="Importer un fichier Markdown"
+      >
+        <span className="text-xs">📥</span>
+      </ToolbarButton>
+
+      {/* Hidden file input */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".md,.markdown"
+        className="hidden"
+        onChange={handleFileImport}
+      />
     </div>
   );
 }

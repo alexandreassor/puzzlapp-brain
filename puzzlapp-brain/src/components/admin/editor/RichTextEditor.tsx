@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -7,6 +7,10 @@ import Image from '@tiptap/extension-image';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import { common, createLowlight } from 'lowlight';
 import { EditorToolbar } from './EditorToolbar';
+import { createAnnexeMention, annexeMentionStyles } from './AnnexeMention';
+import { FigureBlock, figureBlockStyles } from './FigureBlock';
+import { FigureUploader } from './FigureUploader';
+import type { Chapter, Figure } from '@/types';
 
 // Create lowlight instance with common languages
 const lowlight = createLowlight(common);
@@ -18,6 +22,8 @@ interface RichTextEditorProps {
   editable?: boolean;
   className?: string;
   autofocus?: boolean;
+  chapters?: Chapter[];
+  currentChapterId?: string;
 }
 
 export function RichTextEditor({
@@ -27,7 +33,10 @@ export function RichTextEditor({
   editable = true,
   className = '',
   autofocus = false,
+  chapters = [],
+  currentChapterId,
 }: RichTextEditorProps) {
+  const [isFigureUploaderOpen, setIsFigureUploaderOpen] = useState(false);
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -54,6 +63,10 @@ export function RichTextEditor({
           class: 'bg-muted rounded-lg p-4 font-mono text-sm',
         },
       }),
+      // Mention extension for @annexes
+      createAnnexeMention(),
+      // Figure block extension
+      FigureBlock,
     ],
     content,
     editable,
@@ -82,9 +95,26 @@ export function RichTextEditor({
     }
   }, [editable, editor]);
 
+  // Handle figure insertion
+  const handleFigureInsert = (figure: Figure) => {
+    if (!editor) return;
+    editor.chain().focus().setFigure({
+      src: figure.public_url,
+      caption: figure.title,
+      code: figure.code,
+      width: figure.width,
+      figureId: figure.id,
+    }).run();
+  };
+
   return (
     <div className={`overflow-hidden rounded-lg border bg-background ${className}`}>
-      {editable && <EditorToolbar editor={editor} />}
+      {editable && (
+        <EditorToolbar
+          editor={editor}
+          onOpenFigureUploader={() => setIsFigureUploaderOpen(true)}
+        />
+      )}
       <EditorContent editor={editor} />
 
       {/* Custom styles for the editor */}
@@ -180,7 +210,20 @@ export function RichTextEditor({
           color: hsl(var(--primary));
           text-decoration: underline;
         }
+
+        ${annexeMentionStyles}
+
+        ${figureBlockStyles}
       `}</style>
+
+      {/* Figure Uploader Modal */}
+      <FigureUploader
+        isOpen={isFigureUploaderOpen}
+        onClose={() => setIsFigureUploaderOpen(false)}
+        onInsert={handleFigureInsert}
+        chapters={chapters}
+        currentChapterId={currentChapterId}
+      />
     </div>
   );
 }

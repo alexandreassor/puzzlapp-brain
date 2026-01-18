@@ -36,7 +36,7 @@ router.get('/agents', (_req: Request, res: Response) => {
 router.post('/agents/query', async (req: Request, res: Response) => {
   try {
     const body = req.body as AgentRequest;
-    const { agentType, skill, message, context, conversationHistory } = body;
+    const { agentType, skill, message, context, conversationHistory, options } = body;
 
     if (!agentType || !message || !context) {
       res.status(400).json({
@@ -61,7 +61,18 @@ router.post('/agents/query', async (req: Request, res: Response) => {
       content: m.content,
     })) || [];
 
-    const result = await runVictor(victorSkill, message, context, history);
+    // Log des options activées
+    if (options) {
+      console.log('[API] Options:', {
+        webSearch: options.webSearch,
+        extendedThinking: options.extendedThinking,
+        thinkingBudget: options.thinkingBudget,
+        codeExecution: options.codeExecution,
+        skills: options.skills?.map(s => s.skill_id),
+      });
+    }
+
+    const result = await runVictor(victorSkill, message, context, history, options);
 
     res.json(result);
   } catch (error) {

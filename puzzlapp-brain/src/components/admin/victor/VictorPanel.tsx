@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { supabase } from '@/lib/supabase';
 import { VictorSkillButtons } from './VictorSkillButtons';
 import { VictorChat } from './VictorChat';
+import { VictorSettings, DEFAULT_VICTOR_OPTIONS, type VictorOptions } from './VictorSettings';
 import { agentsService } from '@/services/agents';
 import type {
   VictorSkill,
@@ -44,6 +45,7 @@ export function VictorPanel({
   const [conversation, setConversation] = useState<VictorConversation | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
+  const [options, setOptions] = useState<VictorOptions>(DEFAULT_VICTOR_OPTIONS);
 
   // Load or create conversation on mount
   useEffect(() => {
@@ -91,7 +93,8 @@ export function VictorPanel({
         content,
         conversation.messages,
         currentSection?.title,
-        currentChapter?.title
+        currentChapter?.title,
+        options
       );
 
       // Add assistant response to conversation
@@ -111,7 +114,7 @@ export function VictorPanel({
     } finally {
       setIsLoading(false);
     }
-  }, [conversation, isLoading, activeSkill, currentSection, currentChapter]);
+  }, [conversation, isLoading, activeSkill, currentSection, currentChapter, options]);
 
   // Clear conversation
   const handleClearConversation = useCallback(async () => {
@@ -137,7 +140,7 @@ export function VictorPanel({
     <div
       className={cn(
         'fixed top-0 right-0 h-full w-[350px] bg-background border-l shadow-lg z-50',
-        'transform transition-transform duration-300 ease-in-out',
+        'transform transition-transform duration-300 ease-in-out flex flex-col',
         isOpen ? 'translate-x-0' : 'translate-x-full'
       )}
     >
@@ -180,8 +183,15 @@ export function VictorPanel({
         disabled={isLoading}
       />
 
+      {/* Settings */}
+      <VictorSettings
+        options={options}
+        onChange={setOptions}
+        disabled={isLoading}
+      />
+
       {/* Chat */}
-      <div className="h-[calc(100%-140px)]">
+      <div className="flex-1 overflow-hidden">
         {isInitializing ? (
           <div className="flex items-center justify-center h-full text-muted-foreground">
             <span className="text-sm">Chargement...</span>
@@ -207,7 +217,8 @@ async function callVictorAPI(
   message: string,
   conversationHistory: VictorMessage[],
   sectionTitle?: string,
-  chapterTitle?: string
+  chapterTitle?: string,
+  options?: VictorOptions
 ): Promise<string> {
   try {
     // Préparer l'historique de conversation (derniers 10 messages max)
@@ -236,6 +247,13 @@ async function callVictorAPI(
             chapterTitle,
           },
           conversationHistory: history,
+          options: options ? {
+            webSearch: options.webSearch,
+            extendedThinking: options.extendedThinking,
+            thinkingBudget: options.thinkingBudget,
+            skills: options.skills,
+            codeExecution: options.codeExecution,
+          } : undefined,
         }),
       });
 

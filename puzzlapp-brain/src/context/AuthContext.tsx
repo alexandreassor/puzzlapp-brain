@@ -46,12 +46,59 @@ function isAbortError(err: unknown): boolean {
   return false;
 }
 
+// Cache global pour survivre au HMR
+declare global {
+  interface Window {
+    __PUZZLAPP_AUTH_CACHE__?: {
+      user: User | null;
+      session: Session | null;
+      profile: Profile | null;
+      cabinet: Cabinet | null;
+      initialized: boolean;
+    };
+  }
+}
+
+// Initialiser le cache si nécessaire
+if (!window.__PUZZLAPP_AUTH_CACHE__) {
+  window.__PUZZLAPP_AUTH_CACHE__ = {
+    user: null,
+    session: null,
+    profile: null,
+    cabinet: null,
+    initialized: false,
+  };
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [cabinet, setCabinet] = useState<Cabinet | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const cache = window.__PUZZLAPP_AUTH_CACHE__!;
+
+  const [user, setUser] = useState<User | null>(cache.user);
+  const [session, setSession] = useState<Session | null>(cache.session);
+  const [profile, setProfile] = useState<Profile | null>(cache.profile);
+  const [cabinet, setCabinet] = useState<Cabinet | null>(cache.cabinet);
+  const [isLoading, setIsLoading] = useState(!cache.initialized);
+
+  // Fonctions de mise à jour qui synchronisent aussi le cache
+  const updateUser = useCallback((newUser: User | null) => {
+    setUser(newUser);
+    cache.user = newUser;
+  }, [cache]);
+
+  const updateSession = useCallback((newSession: Session | null) => {
+    setSession(newSession);
+    cache.session = newSession;
+  }, [cache]);
+
+  const updateProfile = useCallback((newProfile: Profile | null) => {
+    setProfile(newProfile);
+    cache.profile = newProfile;
+  }, [cache]);
+
+  const updateCabinet = useCallback((newCabinet: Cabinet | null) => {
+    setCabinet(newCabinet);
+    cache.cabinet = newCabinet;
+  }, [cache]);
 
   const loadProfile = useCallback(async (userId: string, signal?: { cancelled: boolean }) => {
     try {
@@ -71,7 +118,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      setProfile(profileData);
+      updateProfile(profileData);
 
       // Charger le cabinet si l'utilisateur en a un
       if (profileData?.cabinet_id) {
@@ -84,7 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (signal?.cancelled) return;
 
         if (cabinetData) {
-          setCabinet(cabinetData);
+          updateCabinet(cabinetData);
         }
       }
     } catch (err) {
@@ -92,10 +139,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (isAbortError(err)) return;
       console.error('[Auth] Erreur:', err);
     }
-  }, []);
+  }, [updateProfile, updateCabinet]);
 
   useEffect(() => {
     if (!isSupabaseConfigured()) {
+      setIsLoading(false);
+      cache.initialized = true;
+      return;
+    }
+
+    // Si déjà initialisé (HMR), ne pas recharger
+    if (cache.initialized && cache.session) {
       setIsLoading(false);
       return;
     }
@@ -109,8 +163,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (signal.cancelled) return;
 
         if (currentSession?.user) {
-          setSession(currentSession);
-          setUser(currentSession.user);
+          updateSession(currentSession);
+          updateUser(currentSession.user);
           await loadProfile(currentSession.user.id, signal);
         }
       } catch (err) {
@@ -120,6 +174,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } finally {
         if (!signal.cancelled) {
           setIsLoading(false);
+          cache.initialized = true;
         }
       }
     };
@@ -131,14 +186,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (event === 'INITIAL_SESSION') return;
 
-      setSession(newSession);
-      setUser(newSession?.user ?? null);
+      updateSession(newSession);
+      updateUser(newSession?.user ?? null);
 
       if (newSession?.user && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED')) {
         await loadProfile(newSession.user.id, signal);
       } else if (!newSession) {
-        setProfile(null);
-        setCabinet(null);
+        updateProfile(null);
+        updateCabinet(null);
       }
     });
 
@@ -146,7 +201,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       signal.cancelled = true;
       subscription.unsubscribe();
     };
-  }, [loadProfile]);
+  }, [loadProfile, cache, updateSession, updateUser, updateProfile, updateCabinet]);
 
   const signIn = useCallback(async (email: string, password: string) => {
     try {
@@ -191,12 +246,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signOut = useCallback(async () => {
+    // Réinitialiser le cache
+    cache.user = null;
+    cache.session = null;
+    cache.profile = null;
+    cache.cabinet = null;
+    cache.initialized = false;
+
     setProfile(null);
     setCabinet(null);
     setUser(null);
     setSession(null);
     await supabase.auth.signOut();
-  }, []);
+  }, [cache]);
 
   const refreshProfile = useCallback(async () => {
     if (user) {

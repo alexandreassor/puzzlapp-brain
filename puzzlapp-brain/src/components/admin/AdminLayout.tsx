@@ -23,8 +23,12 @@ interface AdminLayoutProps {
   onNavigateDashboard?: () => void;
   onNavigateDocumentation?: () => void;
   onNavigatePrompts?: () => void;
+  onNavigateAnnexes?: () => void;
+  onNavigateNotes?: () => void;
   isDocumentationActive?: boolean;
   isPromptsActive?: boolean;
+  isAnnexesActive?: boolean;
+  isNotesActive?: boolean;
 }
 
 export function AdminLayout({
@@ -45,8 +49,12 @@ export function AdminLayout({
   onNavigateDashboard,
   onNavigateDocumentation,
   onNavigatePrompts,
+  onNavigateAnnexes,
+  onNavigateNotes,
   isDocumentationActive = false,
   isPromptsActive = false,
+  isAnnexesActive = false,
+  isNotesActive = false,
 }: AdminLayoutProps) {
   const { user } = useAuth();
   const [isVictorOpen, setIsVictorOpen] = useState(false);
@@ -84,8 +92,12 @@ export function AdminLayout({
           onNavigateDashboard={onNavigateDashboard}
           onNavigateDocumentation={onNavigateDocumentation}
           onNavigatePrompts={onNavigatePrompts}
+          onNavigateAnnexes={onNavigateAnnexes}
+          onNavigateNotes={onNavigateNotes}
           isDocumentationActive={isDocumentationActive}
           isPromptsActive={isPromptsActive}
+          isAnnexesActive={isAnnexesActive}
+          isNotesActive={isNotesActive}
         />
       )}
 

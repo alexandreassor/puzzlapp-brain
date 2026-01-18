@@ -5,7 +5,7 @@
  */
 
 import { useState, useEffect, useCallback } from 'react';
-import { Bot, RefreshCw, Edit2, Copy, Trash2, Plus, Check, X } from 'lucide-react';
+import { Bot, RefreshCw, Edit2, Copy, Trash2, Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

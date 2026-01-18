@@ -10,4 +10,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    // Désactiver HMR - rechargement complet à chaque modification
+    // Plus lent mais 100% stable
+    hmr: false,
+  },
 })

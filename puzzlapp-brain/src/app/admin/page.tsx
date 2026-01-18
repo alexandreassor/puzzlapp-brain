@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { AdminLayout, RichTextEditor, DocumentationPanel, PromptsManager } from '@/components/admin';
+import { AdminLayout, RichTextEditor, DocumentationPanel, PromptsManager, AnnexesManager, NotesPanel, ContentDraftsPanel, ExportModal, MemoireStatsCard } from '@/components/admin';
 import { chaptersService, sectionsService } from '@/services';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,10 +13,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { BookOpen, Settings2 } from 'lucide-react';
+import { BookOpen, Settings2, Download, Paperclip, Lightbulb, FileEdit } from 'lucide-react';
 import type { Chapter, Section } from '@/types';
 
-type ViewMode = 'dashboard' | 'chapter' | 'section' | 'documentation' | 'prompts';
+type ViewMode = 'dashboard' | 'chapter' | 'section' | 'documentation' | 'prompts' | 'annexes' | 'notes' | 'drafts';
 
 export function AdminPage() {
   // State
@@ -41,6 +41,9 @@ export function AdminPage() {
   // Current section content for editor
   const [editorContent, setEditorContent] = useState('');
   const [isSaving, setIsSaving] = useState(false);
+
+  // Export modal state
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   // Load data
   const loadData = useCallback(async () => {
@@ -263,6 +266,83 @@ export function AdminPage() {
       );
     }
 
+    // Annexes View
+    if (viewMode === 'annexes') {
+      return (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold flex items-center gap-2">
+                <Paperclip className="h-6 w-6" />
+                Gestion des Annexes
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Documents complémentaires référençables via @CODE dans l'éditeur
+              </p>
+            </div>
+            <Button variant="outline" onClick={() => setViewMode('dashboard')}>
+              Retour au dashboard
+            </Button>
+          </div>
+
+          <AnnexesManager />
+        </div>
+      );
+    }
+
+    // Notes/Réflexions View
+    if (viewMode === 'notes') {
+      return (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold flex items-center gap-2">
+                <Lightbulb className="h-6 w-6" />
+                Réflexions & Notes
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Capturez vos idées, triez-les et intégrez-les dans vos sections
+              </p>
+            </div>
+            <Button variant="outline" onClick={() => setViewMode('dashboard')}>
+              Retour au dashboard
+            </Button>
+          </div>
+
+          <NotesPanel
+            chapters={chapters}
+            sections={sections}
+            currentChapterId={selectedChapterId}
+            currentSectionId={selectedSectionId}
+          />
+        </div>
+      );
+    }
+
+    // Content Drafts View
+    if (viewMode === 'drafts') {
+      return (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold flex items-center gap-2">
+                <FileEdit className="h-6 w-6" />
+                Brouillons de contenu
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Rédigez, validez, puis intégrez dans le mémoire
+              </p>
+            </div>
+            <Button variant="outline" onClick={() => setViewMode('dashboard')}>
+              Retour au dashboard
+            </Button>
+          </div>
+
+          <ContentDraftsPanel chapters={chapters} />
+        </div>
+      );
+    }
+
     // Section Editor View
     if (viewMode === 'section' && currentSection) {
       return (
@@ -291,6 +371,8 @@ export function AdminPage() {
             onChange={handleEditorChange}
             placeholder="Commencez à rédiger le contenu de cette section..."
             className="min-h-[500px]"
+            chapters={chapters}
+            currentChapterId={selectedChapterId}
           />
         </div>
       );
@@ -424,6 +506,9 @@ export function AdminPage() {
           </Card>
         </div>
 
+        {/* Memoire Progress Stats */}
+        <MemoireStatsCard className="md:w-1/2" />
+
         {/* Quick Actions */}
         <div className="grid gap-4 md:grid-cols-3">
           {/* Documentation Card */}
@@ -466,17 +551,80 @@ export function AdminPage() {
             </CardHeader>
           </Card>
 
-          {/* Victor Card */}
-          <Card className="border-dashed">
+          {/* Export Mémoire Card */}
+          <Card
+            className="cursor-pointer hover:border-primary transition-colors"
+            onClick={() => setIsExportModalOpen(true)}
+          >
             <CardHeader>
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10">
-                  <span className="text-xl">🤖</span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10">
+                  <Download className="h-5 w-5 text-emerald-600" />
                 </div>
                 <div>
-                  <CardTitle className="text-base">Victor — Assistant IA</CardTitle>
+                  <CardTitle className="text-base">Exporter le mémoire</CardTitle>
                   <CardDescription>
-                    Raccourci : Ctrl+Shift+V pour ouvrir
+                    PDF, Markdown avec options avancées
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+
+          {/* Annexes Card */}
+          <Card
+            className="cursor-pointer hover:border-primary transition-colors"
+            onClick={() => setViewMode('annexes')}
+          >
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500/10">
+                  <Paperclip className="h-5 w-5 text-orange-600" />
+                </div>
+                <div>
+                  <CardTitle className="text-base">Annexes</CardTitle>
+                  <CardDescription>
+                    Gérer les documents complémentaires (@)
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+
+          {/* Notes Card */}
+          <Card
+            className="cursor-pointer hover:border-primary transition-colors"
+            onClick={() => setViewMode('notes')}
+          >
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-500/10">
+                  <Lightbulb className="h-5 w-5 text-yellow-600" />
+                </div>
+                <div>
+                  <CardTitle className="text-base">Réflexions</CardTitle>
+                  <CardDescription>
+                    Capturer et trier vos idées
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+
+          {/* Content Drafts Card */}
+          <Card
+            className="cursor-pointer hover:border-primary transition-colors"
+            onClick={() => setViewMode('drafts')}
+          >
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
+                  <FileEdit className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <CardTitle className="text-base">Brouillons de contenu</CardTitle>
+                  <CardDescription>
+                    Rédiger et valider avant intégration
                   </CardDescription>
                 </div>
               </div>
@@ -548,7 +696,17 @@ export function AdminPage() {
           setSelectedChapterId(undefined);
           setSelectedSectionId(undefined);
         }}
+        onNavigateAnnexes={() => {
+          setViewMode('annexes');
+          setSelectedChapterId(undefined);
+          setSelectedSectionId(undefined);
+        }}
+        onNavigateNotes={() => {
+          setViewMode('notes');
+        }}
         isDocumentationActive={viewMode === 'documentation'}
+        isAnnexesActive={viewMode === 'annexes'}
+        isNotesActive={viewMode === 'notes'}
       >
         {renderContent()}
       </AdminLayout>
@@ -616,6 +774,14 @@ export function AdminPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Export Modal */}
+      <ExportModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+        chapters={chapters}
+        sections={sections}
+      />
     </>
   );
 }

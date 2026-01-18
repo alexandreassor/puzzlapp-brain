@@ -64,6 +64,27 @@ export interface AgentContext {
   additionalContext?: Record<string, unknown>;
 }
 
+// Skill Anthropic (built-in ou custom)
+export interface AnthropicSkill {
+  type: 'anthropic' | 'custom';
+  skill_id: string;
+  version: string;
+  name?: string;
+}
+
+// Options avancées pour les agents
+export interface AgentOptions {
+  webSearch?: boolean;
+  extendedThinking?: boolean;
+  thinkingBudget?: number;
+  // Skills API (beta)
+  skills?: AnthropicSkill[];
+  codeExecution?: boolean;
+  // MCP (futur)
+  mcpNotion?: boolean;
+  mcpSupabase?: boolean;
+}
+
 // Requête vers un agent
 export interface AgentRequest {
   agentType: AgentType;
@@ -72,6 +93,7 @@ export interface AgentRequest {
   context: AgentContext;
   conversationHistory?: AgentMessage[];
   stream?: boolean;
+  options?: AgentOptions;
 }
 
 // Réponse d'un agent

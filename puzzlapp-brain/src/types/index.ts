@@ -198,6 +198,105 @@ export interface ProfileWithCabinet extends Profile {
 }
 
 // =============================================================================
+// ANNEXES (documents complémentaires référençables via @)
+// =============================================================================
+
+export type AnnexeType = 'document' | 'tableau' | 'figure' | 'questionnaire' | 'exemple';
+
+export interface Annexe {
+  id: string;
+  code: string;           // ex: "QUESTIONNAIRE_KM", "TABLEAU_ROI"
+  title: string;
+  description?: string;
+  content_md?: string;
+  annexe_type: AnnexeType;
+  order_num: number;
+  created_at: string;
+  updated_at?: string;
+}
+
+export interface SectionAnnexe {
+  id: string;
+  section_id: string;
+  annexe_id: string;
+  created_at: string;
+}
+
+// =============================================================================
+// NOTES / RÉFLEXIONS (mode brouillon)
+// =============================================================================
+
+export type NoteStatus = 'draft' | 'kept' | 'discarded' | 'integrated';
+
+export interface Note {
+  id: string;
+  content: string;
+  status: NoteStatus;
+  linked_chapter_id?: string;
+  linked_section_id?: string;
+  tags: string[];
+  priority: 0 | 1 | 2;      // 0=normal, 1=important, 2=urgent
+  user_id: string;
+  created_at: string;
+  updated_at?: string;
+}
+
+export interface NoteWithLinks extends Note {
+  chapter?: Chapter;
+  section?: Section;
+}
+
+// =============================================================================
+// FIGURES (screenshots, infographies, schémas)
+// =============================================================================
+
+export type FigureType = 'image' | 'screenshot' | 'infographie' | 'schema' | 'tableau';
+export type FigureWidth = 'small' | 'medium' | 'full';
+
+export interface Figure {
+  id: string;
+  code: string;           // ex: "fig-1-1", "fig-2-3"
+  title: string;          // Légende
+  description?: string;   // Alt text / description longue
+  storage_path: string;   // Chemin dans Supabase Storage
+  public_url: string;     // URL publique de l'image
+  chapter_id?: string;    // Chapitre associé (pour numérotation)
+  figure_type: FigureType;
+  width: FigureWidth;
+  order_num: number;
+  created_at: string;
+  updated_at?: string;
+}
+
+export interface FigureWithChapter extends Figure {
+  chapter?: Chapter;
+}
+
+// =============================================================================
+// BROUILLONS DE CONTENU (staging area pour le mémoire)
+// =============================================================================
+
+export type ContentDraftStatus = 'draft' | 'validated' | 'integrated';
+
+export interface ContentDraft {
+  id: string;
+  title: string;
+  content_md: string;
+  status: ContentDraftStatus;
+  target_chapter_id?: string;
+  target_section_id?: string;
+  tags: string[];
+  user_id: string;
+  created_at: string;
+  updated_at?: string;
+}
+
+export interface ContentDraftWithTargets extends ContentDraft {
+  target_chapter?: Chapter;
+  target_section?: Section;
+}
+
+// =============================================================================
 // NOTION INTEGRATION (Phase 6 - BYON)
 // =============================================================================
 

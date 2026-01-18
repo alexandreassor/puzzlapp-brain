@@ -15,7 +15,6 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import type { AgentPrompt } from '@/services/prompts';
 import { promptsService } from '@/services/prompts';
-import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 
 interface PromptEditorProps {
